@@ -1,0 +1,7 @@
+{{#leaflet-map center=center zoom=zoom onMoveend=(action "updatebbox") onClick=(action "dropPin")}}
+  {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution=attribution}}
+  <!-- {{#if pin}}
+    {{#marker-layer location=pinLocation icon=icon draggable=true riseOnHover=true riseOffset=1000}}
+    {{/marker-layer}}
+  {{/if}} -->
+{{/leaflet-map}}

@@ -15,10 +15,10 @@ export default Ember.Controller.extend(mapBboxController, setTextboxClosed, shar
   zoom: 14,
 
 	actions: {
-		updatebbox(e) {
-			var newbox = e.target.getBounds();
-			this.set('bbox', newbox.toBBoxString());
-		},
+		// updatebbox(e) {
+		// 	var newbox = e.target.getBounds();
+		// 	this.set('bbox', newbox.toBBoxString());
+		// },
     setIsochroneMode: function(mode){
       if (this.get('isochrone_mode') === mode){
         this.set('isochrone_mode', null);
