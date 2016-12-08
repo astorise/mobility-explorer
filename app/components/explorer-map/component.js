@@ -2,15 +2,17 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | <a href="http://www.mapzen.com">Mapzen</a> | <a href="http://www.transit.land">Transitland</a> | Imagery © <a href="https://carto.com/">CARTO</a>',
-	
-	// center: Ember.computed('pin', function(){
- //    if (this.get('pin')){
- //      return this.get('pinLocation');
- //    } else {
- //      return this.get('mapCenter');
- //    }
- //  }),
- //  zoom: 14,
+
+	center: Ember.computed('pin', function(){
+    if (this.get('pin')){
+      return this.get('pinLocation');
+    } else {
+      return this.get('mapCenter');
+    }
+  }),
+  zoom: 14,
+  mapCenter: [43.072963279523,-89.39234018325806],
+ 
 	actions: {
 		updatebbox: function(e) {
 			var newbox = e.target.getBounds();

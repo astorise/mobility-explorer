@@ -93,7 +93,7 @@
     </div>
   </div>
 {{else}}
-  <div class="col-md-4 linebreak-text" id="sidebar">
+  <!-- <div class="col-md-4 linebreak-text" id="sidebar"> -->
    <div style="display:flex;justify-content:center;align-items:center;">
       <div style="width:130px;height:40px;">
         <a href="https://mapzen.com/"><div class="mapzen-logo"></div></a>
@@ -149,8 +149,8 @@
         <div class="btn-group-vertical" role="group" >
         {{#link-to 'isochrones' (query-params bbox=leafletBbox onestop_id=null served_by=null operated_by=null serves=null style_routes_by=null isochrone_mode=null pin=pin)}}<button class="btn btn-transparent-alt">Generate Isochrones</button>{{/link-to}}
       </div>
-    </div>
-  <div class="col-md-8">
+    <!-- </div> -->
+  <!-- <div class="col-md-8">
     {{#if currentlyLoading.isLoading}}<div class="loading-spinner-03"></div>{{/if}}
     <div id={{if currentlyLoading.isLoading 'map-loading' 'map'}}>
         <div class="location-search">
@@ -186,5 +186,5 @@
             {{/if}}
         {{/leaflet-map}}
     </div>
-  </div>
+  </div> -->
 {{/if}}
