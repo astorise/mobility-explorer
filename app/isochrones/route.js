@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import mapBboxRoute from 'mobility-playground/mixins/map-bbox-route';
 import setLoading from 'mobility-playground/mixins/set-loading';
 import polygon from 'npm:turf-polygon';
 import difference from 'npm:turf-difference';

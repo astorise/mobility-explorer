@@ -3,7 +3,7 @@ import setTextboxClosed from 'mobility-playground/mixins/set-textbox-closed';
 import sharedActions from 'mobility-playground/mixins/shared-actions';
 
 export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
-	queryParams: ['onestop_id', 'serves', 'operated_by', 'vehicle_type', 'style_routes_by', 'bbox', 'pin'],
+	queryParams: ['onestop_id', 'serves', 'operated_by', 'vehicle_type', 'style_routes_by','pin'],
 	
 	queryIsInactive: false,
 	onestop_id: null,

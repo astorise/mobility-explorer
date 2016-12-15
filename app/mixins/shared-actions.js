@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Mixin.create({
   attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | <a href="http://www.mapzen.com">Mapzen</a> | <a href="http://www.transit.land">Transitland</a> | Imagery © <a href="https://carto.com/">CARTO</a>',
-	bbox: null,
+	// bbox: null,
 	closeTextbox: Ember.inject.service(),
   currentlyLoading: Ember.inject.service(),
 	icon: L.icon({

@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import mapBboxController from 'mobility-playground/mixins/map-bbox-controller';
 import sharedActions from 'mobility-playground/mixins/shared-actions';
 
 
-export default Ember.Controller.extend(sharedActions, {
+export default Ember.Controller.extend(sharedActions, mapBboxController, {
 	attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors | <a href="http://www.mapzen.com">Mapzen</a> | <a href="http://www.transit.land">Transitland</a> | Imagery © <a href="https://carto.com/">CARTO</a>',
 
 	center: Ember.computed('pin', function(){
@@ -15,6 +16,8 @@ export default Ember.Controller.extend(sharedActions, {
   zoom: 14,
   mapCenter: [43.072963279523,-89.39234018325806],
 	pin: null,
+  // bbox: null,
+  leafletBbox: null,
 
  
 	actions: {
@@ -22,6 +25,20 @@ export default Ember.Controller.extend(sharedActions, {
 			var newbox = e.target.getBounds();
 			this.set('bbox', newbox.toBBoxString());
 		},
+    updateLeafletBbox(e) {
+      var leafletBounds = e.target.getBounds();     
+      this.set('leafletBbox', leafletBounds.toBBoxString());
+    },
+    // updatebbox(e) {
+    //   var bounds = this.get('leafletBbox');
+    //   this.set('bbox', bounds);
+    //   this.set('mapMoved', false);
+    // },
+    updateMapMoved(){
+      if (this.get('mousedOver') === true){
+        this.set('mapMoved', true);
+      }
+    },
 		dropPin: function(e){
       var lat = e.latlng.lat;
       var lng = e.latlng.lng;
@@ -58,6 +75,25 @@ export default Ember.Controller.extend(sharedActions, {
     },
     clearPlace: function(){
       this.set('place', null);
+    },
+    mouseOver(){
+      this.set('mousedOver', true);
+    },
+    setOnestopId(operator) {
+      var onestopId = operator.id;
+      this.set('onestop_id', onestopId);
+      this.set('selectedOperator', operator);
+    },
+    selectOperator(operator){
+      this.set('selectedOperator', null);
+      operator.set('operator_path_opacity', 1);
+      operator.set('operator_path_weight', 3);
+      this.set('hoverOperator', operator);
+    },
+    unselectOperator(operator){
+      operator.set('operator_path_opacity', 0.5);
+      operator.set('operator_path_weight', 1.5);
+      this.set('hoverOperator', null);
     }
 	}
 });

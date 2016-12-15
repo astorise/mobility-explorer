@@ -1,10 +1,9 @@
 import Ember from 'ember';
-import mapBboxController from 'mobility-playground/mixins/map-bbox-controller';
 import setTextboxClosed from 'mobility-playground/mixins/set-textbox-closed';
 import sharedActions from 'mobility-playground/mixins/shared-actions';
 
 
-export default Ember.Controller.extend(mapBboxController, setTextboxClosed, sharedActions, {
+export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
 	queryParams: ['onestop_id', 'isochrone_mode', 'pin', 'departure_time'],
 
   onestop_id: null,

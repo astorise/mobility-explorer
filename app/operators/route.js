@@ -1,15 +1,9 @@
 import Ember from 'ember';
-import mapBboxRoute from 'mobility-playground/mixins/map-bbox-route';
 import setLoading from 'mobility-playground/mixins/set-loading';
 
-export default Ember.Route.extend(mapBboxRoute, setLoading, {
+export default Ember.Route.extend(setLoading, {
   queryParams: {
     onestop_id: {
-      // replace: true,
-      refreshModel: true
-    },
-    bbox: {
-      replace: true,
       refreshModel: true
     },
     pin: {
@@ -46,7 +40,7 @@ export default Ember.Route.extend(mapBboxRoute, setLoading, {
     this.store.unloadAll('data/transitland/route_stop_pattern'); 
     params.total=true;
     params.pin=null;
-    
+    params.bbox=this.paramsFor('application').bbox;
     return this.store.query('data/transitland/operator', params);
   },
   actions:{

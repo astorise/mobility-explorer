@@ -1,11 +1,10 @@
 import Ember from 'ember';
-import mapBboxController from 'mobility-playground/mixins/map-bbox-controller';
 import setTextboxClosed from 'mobility-playground/mixins/set-textbox-closed';
 import sharedActions from 'mobility-playground/mixins/shared-actions';
 
 
-export default Ember.Controller.extend(mapBboxController, setTextboxClosed, sharedActions, {
-	queryParams: ['bbox', 'onestop_id','pin'],
+export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
+	queryParams: ['onestop_id','pin'],
 	
 	queryIsInactive: false,
 	onestop_id: null,
