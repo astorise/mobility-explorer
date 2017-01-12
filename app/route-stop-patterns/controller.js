@@ -3,14 +3,13 @@ import setTextboxClosed from 'mobility-playground/mixins/set-textbox-closed';
 import sharedActions from 'mobility-playground/mixins/shared-actions';
 
 export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
-	queryParams: ['traversed_by', 'pin'],
+	queryParams: ['traversed_by', 'pin', 'display_stops'],
 	
 	traversed_by: null,
 	onestop_id: null,
+	display_stops: null,
 	serves: null,
-	displayStops: false,
 	hoverStop: null,
-	displayRspStops: false,
 	selectedRsp: null,
 	bounds: Ember.computed('bbox', function(){
 		if (this.get('bbox') === null){
@@ -73,7 +72,15 @@ export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
 			this.set('operated_by', null);
 		},
 		displayStops: function(){
-			this.toggleProperty('displayStops');
+			if (this.get('display_stops') === "true"){
+				this.set('display_stops', null)
+			} else if (this.get('display_stops') === null){
+				this.set('display_stops', "true")
+			} else {
+				console.log('else:' + this.get('display_stops'))
+				debugger;
+			}
+			console.log(this.get('display_stops'))
 		},
 		selectStop(stop){
 			this.set('hoverStop', stop);
@@ -86,7 +93,7 @@ export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
 			this.set('serves', null);
 			this.set('hoverStop', null);
 			this.set('onestop_id', onestopId);
-			this.set('displayStops', false);
+			this.set('display_stops', false);
 			this.transitionToRoute('stops', {queryParams: {bbox: this.get('bbox'), onestop_id: this.get('onestop_id')}});
 		},
 		setRsp: function(rsp){

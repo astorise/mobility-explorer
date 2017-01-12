@@ -22,11 +22,11 @@
 						  		{{/each}}
 									<br>
 									<div class="form-group">
-								  	{{#if displayStops}}<input type="checkbox" id="check-1" name="option-one" checked {{action "displayStops"}}>
+								  	{{#if (eq display_stops "true")}}<input type="checkbox" id="check-1" name="option-one" checked {{action "displayStops"}}>
 								  	{{else}}<input type="checkbox" id="check-1" name="option-one" {{action "displayStops"}}>{{/if}}
 								    <label for="check-1">Show stops served by route</label>
 								  </div>
-								  {{#if displayStops}}
+								  {{#if display_stops}}
 								  	{{#unless selectedRsp}}
 								  		<div class="svg-wrapper-legend-route-only">
 								  			<row>
@@ -38,7 +38,7 @@
 										{{/unless}}
 									{{/if}}
 								  {{#if selectedRsp}}
-								  	{{#if displayStops}}
+								  	{{#if display_stops}}
 									  	<div class="svg-wrapper-legend-route">
 									  			<row>
 												    <svg class="svg-stop-legend" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
@@ -118,7 +118,7 @@
 								{{/geojson-layer}}
 							{{/each}}
 
-							{{#if displayStops}}
+							{{#if display_stops}}
 								{{#each model.stopsServedByRoute as |stop|}}
 						  		{{#marker-layer location=stop.location icon=(div-icon html=stop.html className=stop.icon_class iconSize=stop.icon_size) draggable=false clickable=false riseOnHover=true riseOffset=1000}}
 						  		{{/marker-layer}}
@@ -151,11 +151,11 @@
 					<br>
 
 					<div class="form-group">
-				  	{{#if displayStops}}<input type="checkbox" id="check-1" name="option-one" checked {{action "displayStops"}}>
+				  	{{#if (eq display_stops "true")}}<input type="checkbox" id="check-1" name="option-one" checked {{action "displayStops"}}>
 				  	{{else}}<input type="checkbox" id="check-1" name="option-one" {{action "displayStops"}}>{{/if}}
 				    <label for="check-1">Show stops served by route</label>
 				  </div>
-				  {{#if displayStops}}
+				  {{#if display_stops}}
 				  	{{#unless selectedRsp}}
 				  		<div class="svg-wrapper-legend-route-only">
 				  			<row>
@@ -167,7 +167,7 @@
 						{{/unless}}
 					{{/if}}
 				  {{#if selectedRsp}}
-				  	{{#if displayStops}}
+				  	{{#if display_stops}}
 					  	<div class="svg-wrapper-legend-route">
 					  			<row>
 								    <svg class="svg-stop-legend" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="15px" viewBox="0 0 180 180" enable-background="new 0 0 180 180" xml:space="preserve">
@@ -246,7 +246,7 @@
 							{{/geojson-layer}}
 						{{/each}}
 						
-						{{#if displayStops}}
+						{{#if display_stops}}
 							{{#each model.stopsServedByRoute as |stop|}}
 					  		{{#marker-layer location=stop.location icon=(div-icon html=stop.html className=stop.icon_class iconSize=stop.icon_size) draggable=false clickable=true riseOnHover=true riseOffset=1000 onMouseover=(action "selectStop" stop) onMouseout=(action "unselectStop" stop) onClick=(action "setStopOnestopId" stop)}}
 					  		{{/marker-layer}}
