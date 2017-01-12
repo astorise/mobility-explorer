@@ -76,11 +76,7 @@ export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
 				this.set('display_stops', null)
 			} else if (this.get('display_stops') === null){
 				this.set('display_stops', "true")
-			} else {
-				console.log('else:' + this.get('display_stops'))
-				debugger;
 			}
-			console.log(this.get('display_stops'))
 		},
 		selectStop(stop){
 			this.set('hoverStop', stop);
@@ -93,7 +89,7 @@ export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
 			this.set('serves', null);
 			this.set('hoverStop', null);
 			this.set('onestop_id', onestopId);
-			this.set('display_stops', false);
+			this.set('display_stops', null);
 			this.transitionToRoute('stops', {queryParams: {bbox: this.get('bbox'), onestop_id: this.get('onestop_id')}});
 		},
 		setRsp: function(rsp){
@@ -137,7 +133,10 @@ export default Ember.Controller.extend(setTextboxClosed, sharedActions, {
 				stopsLength = stops.length;
 				for (i = 0; i < stopsLength; i++){
 					stopId = stops[i];
+					// console.log(stopId);
 					this.store.peekRecord('data/transitland/stop',stopId).set('rsp_stop_pattern_number', i+1);
+					// debugger;
+
 				}
 			}
 		}
