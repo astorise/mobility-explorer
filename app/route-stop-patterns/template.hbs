@@ -252,10 +252,10 @@
 					  		{{/marker-layer}}
 				  		{{/each}}
 
-				  		{{#each model.stops.features as |stop|}}
-						  		{{#marker-layer location=stop.geometry.coordinates icon=stop.icon draggable=false riseOnHover=true riseOffset=1000}}
-						  		{{/marker-layer}}
-					  		{{/each}}
+				  		<!-- {{#each model.stops.features as |stop|}}
+					  		{{#marker-layer location=stop.geometry.coordinates icon=stop.icon draggable=false riseOnHover=true riseOffset=1000}}
+					  		{{/marker-layer}}
+				  		{{/each}} -->
 				  	{{/if}}
 				{{/leaflet-map}}
 		</div>
